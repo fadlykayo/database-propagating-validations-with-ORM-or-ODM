@@ -3,8 +3,15 @@ module.exports = function (sequelize, DataTypes) {
   var Events = sequelize.define('Events', {
     title: {
       type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Title is empty'
+      },
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          args: true,
+          msg: 'Title can not be an empty string'
+        },
         isUniqued: function (value, next) {
           Events.findAll({
             where: {
@@ -20,9 +27,16 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
+      allowNull: {
+        args: false,
+        msg: 'Date is empty'
+      },
       validate: {
-        notEmpty: true,
+        isDate: {
+          args: true,
+          msg: 'Date can not be empty'
+        },
         isUniqued: function (value, next) {
           Events.findAll({
             where: {
@@ -39,14 +53,28 @@ module.exports = function (sequelize, DataTypes) {
     },
     place: {
       type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Place is empty'
+      },
       validate: {
-        notEmpty: true
+        notEmpty: {
+          args: true,
+          msg: 'Place can not be an empty string'
+        }
       }
     },
     contact: {
       type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Contact is empty'
+      },
       validate: {
-        notEmpty: true
+        notEmpty: {
+          args: true,
+          msg: 'Contact can not be an empty string'
+        }
       }
     }
   }, {

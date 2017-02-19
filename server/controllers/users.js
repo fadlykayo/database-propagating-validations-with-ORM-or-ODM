@@ -12,15 +12,27 @@ module.exports = {
     })
   },
   createUser: (req, res) => {
-    models.Users.create({
-      username: req.body.username,
-      password: hash.generate(req.body.password),
-      email: req.body.email
-    }).then(function (data) {
-      res.send(data)
-    }).catch(function (err) {
-      res.send(err)
-    })
+    if (req.body.password) {
+      models.Users.create({
+        username: req.body.username,
+        password: hash.generate(req.body.password),
+        email: req.body.email
+      }).then(function (data) {
+        res.send(data)
+      }).catch(function (err) {
+        res.send(err)
+      })
+    }else {
+      models.Users.create({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email
+      }).then(function (data) {
+        res.send(data)
+      }).catch(function (err) {
+        res.send(err)
+      })
+    }
   },
   deleteUser: (req, res) => {
     models.Users.destroy({
@@ -28,7 +40,7 @@ module.exports = {
         id: req.params.id
       }
     }).then(function (data) {
-      res.send(data)
+      res.status(200).json({m: `Deleted User with ID: ${req.params.id}`})
     }).catch(function (err) {
       res.send(err)
     })

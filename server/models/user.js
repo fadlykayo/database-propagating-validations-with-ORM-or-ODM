@@ -3,8 +3,15 @@ module.exports = function (sequelize, DataTypes) {
   var Users = sequelize.define('Users', {
     username: {
       type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Username is empty'
+      },
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          args: true,
+          msg: 'Username can not be an empty string'
+        },
         isUniqued: function (value, next) {
           Users.findAll({
             where: {
@@ -21,14 +28,24 @@ module.exports = function (sequelize, DataTypes) {
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Password is empty'
+      },
       validate: {
-        notEmpty: true
+        notEmpty: {
+          args: true,
+          msg: 'Password can not be an empty string'
+        }
       }
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: {
+        args: false,
+        msg: 'Email is empty'
+      },
       validate: {
-        notEmpty: true,
         isEmail: {
           args: true,
           msg: 'Email format incorrect'

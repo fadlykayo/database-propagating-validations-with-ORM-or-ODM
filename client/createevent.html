@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Database Validation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  </head>
+  <body>
+    <div class="row" style="margin: 20px 100px;">
+      <br>
+      <p id="error-message-event"></p>
+      <form id="add-event-form" method="post">
+        <h5 style="color: #006666;">Post Event</h5>
+        <hr style="border: 2px solid #006666;">
+        <br>
+        <div class="form-group">
+          <label for="title_create">Title:</label>
+          <input type="text" class="form-control" name="title_create" id="title_create" value="">
+        </div>
+        <div class="form-group">
+          <label for="date_create">Date:</label>
+          <input type="datetime-local" class="form-control" name="date_create" id="date_create" style="max-width:20%; text-align: center;">
+        </div>
+        <div class="form-group">
+          <label for="place_create">Location:</label>
+          <input type="text" class="form-control" name="place_create" id="place_create" value="">
+        </div>
+        <div class="form-group">
+          <label for="contact_create">Contact Person:</label>
+          <input type="text" class="form-control" name="contact_create" id="contact_create" value="">
+        </div>
+        <br>
+        <button type="submit" class="btn teal darken-3">Add Event</button>
+        <a href="/home.html" class="btn red darken-4">Cancel</a>
+      </form>
+      <br>
+      <br>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="index.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -16,16 +16,20 @@ module.exports = {
     })
   },
   createEvent: (req, res) => {
-    models.Events.create({
-      title: req.body.title,
-      date: req.body.date,
-      place: req.body.place,
-      contact: req.body.contact
-    }).then(function (data) {
-      res.send(data)
-    }).catch(function (err) {
-      res.send(err)
-    })
+    if (!req.body.date) {
+      res.status(200).json({message: 'Validation error: Date cannot be empty'})
+    }else {
+      models.Events.create({
+        title: req.body.title,
+        date: req.body.date,
+        place: req.body.place,
+        contact: req.body.contact
+      }).then(function (data) {
+        res.send(data)
+      }).catch(function (err) {
+        res.send(err)
+      })
+    }
   },
   deleteEvent: (req, res) => {
     models.Events.destroy({
