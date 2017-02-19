@@ -40,7 +40,7 @@ module.exports = {
         id: req.params.id
       }
     }).then(function (data) {
-      res.status(200).json({m: `Deleted User with ID: ${req.params.id}`})
+      res.status(200).json({message: `Deleted User with ID: ${req.params.id}`})
     }).catch(function (err) {
       res.send(err)
     })
@@ -71,10 +71,10 @@ module.exports = {
           id: data.id
         })
       } else {
-        res.send({m: 'Authentication failed. Wrong password.'})
+        res.send({message: 'Authentication failed. Wrong password.'})
       }
     }).catch(function () {
-      res.send({m: 'Authentication failed. User not found.'})
+      res.send({message: 'Authentication failed. User not found.'})
     })
   }
 }

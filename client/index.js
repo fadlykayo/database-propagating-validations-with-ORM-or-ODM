@@ -17,7 +17,7 @@ $('#login-form').on('submit', (e) => {
         localStorage.setItem('Username', usernameVal)
         window.location.assign('http://localhost:8080/home.html')
       }else {
-        window.location.assign('http://localhost:8080/index.html')
+        $('#error-message').text(resp.message)
       }
     },
     error: function (err) {
