@@ -2,11 +2,6 @@ $(document).ready(function () {
   getEvents()
   let userName = localStorage.getItem('Username')
   $('#nav-username').text('Username: ' + userName)
-  if (!localStorage.getItem('UserId')) {
-    window.location.assign('http://localhost:8080/index.html')
-  }else {
-    window.location.assign('http://localhost:8080/home.html')
-  }
 })
 
 $('#login-form').on('submit', (e) => {
@@ -57,7 +52,7 @@ $('#register-form').on('submit', (e) => {
 
 $('#logout').click(function () {
   window.localStorage.clear()
-  window.location.assign('http://localhost:8080/index.html')
+  window.location.replace('http://localhost:8080/index.html')
 })
 
 $('#add-event-form').on('submit', (e) => {
